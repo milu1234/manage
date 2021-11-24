@@ -46,11 +46,7 @@
           <div class="bread">面包屑</div>
         </div>
         <div class="user-info">
-          <el-badge
-            :is-dot="noticeCount > 0 ? true : false"
-            class="notice"
-            type="danger"
-          >
+          <el-badge :is-dot="true" class="notice" type="danger">
             <i class="el-icon-bell"></i>
           </el-badge>
           <el-dropdown @command="handleLogout">
@@ -93,6 +89,13 @@ export default {
   },
 
   methods: {
+    handleLogout(key) {
+      // console.log(key);
+      if (key == "email") return;
+      this.$store.commit("saveUserInfo", "");
+      this.userInfo = null;
+      this.$router.push("/login");
+    },
     toggle() {
       this.isCollapse = !this.isCollapse;
     },
@@ -109,7 +112,7 @@ export default {
     height: 100vh;
     background-color: #001529;
     color: #fff;
-    overflow-y: auto;
+    // overflow-y: auto;
     transition: width 0.5s;
     .logo {
       display: flex;
@@ -159,6 +162,7 @@ export default {
           margin-right: 15px;
           font-size: 18px;
         }
+        z-index: 10;
       }
       .user-info {
         .notice {
