@@ -3,35 +3,56 @@ import Home from './../components/Home.vue'
 
 const routes = [
     {
-        name:'home',
-        path:'/',
-        meta:{
-            title:'首页'
+        name: 'home',
+        path: '/',
+        meta: {
+            title: '首页'
         },
-        component:Home,
-        redirect:'/welcome',
-        children:[
+        component: Home,
+        redirect: '/welcome',
+        children: [
             {
-                name:'welcome',
-                path:'/welcome',
-                meta:{
-                    title:'欢迎页'
+                name: 'welcome',
+                path: '/welcome',
+                meta: {
+                    title: '欢迎页'
                 },
-                component:()=>import('./../views/Welcome.vue')
-            }
+                component: () => import('./../views/Welcome.vue')
+            },
+            {
+                name: '系统管理',
+                path: '/system',
+                meta: {
+                    title: '系统管理'
+                },
+                component: () => import('./../views/Welcome.vue'),
+                children: [
+                    {
+                        name: 'user',
+                        path: 'user',
+                        meta: {
+                            title: '用户管理'
+                        },
+                        component: () => import('./../views/Welcome.vue')
+                    },
+                ]
+
+            },
+
         ]
     },
+
     {
-        name:'login',
-        path:'/login',
-        meta:{
-            title:'登录'
+        name: 'login',
+        path: '/login',
+        meta: {
+            title: '登录'
         },
-        component:()=>import('./../views/Login.vue')
+        component: () => import('./../views/Login.vue')
     }
 ]
 const router = createRouter({
-    history:createWebHashHistory(),
+    history: createWebHashHistory(),
     routes
 })
 
