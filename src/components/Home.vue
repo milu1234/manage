@@ -8,7 +8,7 @@
       </div>
       <!-- 导航菜单 -->
       <el-menu
-        :default-active="activeMenu"
+        default-active=""
         class="nav-menu"
         background-color="#001529"
         text-color="#fff"
@@ -79,13 +79,11 @@ export default {
       },
       userMenu: [],
       noticeCount: 0,
-      activeMenu: location.hash.slice(1),
     };
   },
   mounted() {
     this.getNoticeCount();
     this.getMenuList();
-    this.updateActive();
   },
   methods: {
     handleLogout(key) {
@@ -105,9 +103,6 @@ export default {
     async getMenuList() {
       const res = await this.$api.menuList();
       this.userMenu = res;
-    },
-    updateActive() {
-      this.activeMenu = location.hash.slice(1);
     },
   },
 };
