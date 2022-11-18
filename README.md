@@ -1,7 +1,8 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+1. 加一个审批人字段
+2. 把状态调成待审批
+3. 申请休假的加一个type 字段
+4. 后端根据type字段 去处理
+5. 审批按钮的条件
+6. 去掉申请休假的弹窗
+7. 去除申请休假
+8. 操作里面 留一个审核 

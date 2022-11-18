@@ -53,9 +53,7 @@
         </div>
       </div>
       <div class="wrapper">
-        <div class="main-page">
-          <router-view></router-view>
-        </div>
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -73,10 +71,7 @@ export default {
   data() {
     return {
       isCollapse: false,
-      userInfo: {
-        userName: "jason",
-        userEmail: "jason@admin.com",
-      },
+      userInfo: this.$store.state.userInfo || {},
       userMenu: [],
       noticeCount: 0,
     };
@@ -101,8 +96,10 @@ export default {
       this.noticeCount = res;
     },
     async getMenuList() {
-      const res = await this.$api.menuList();
-      this.userMenu = res;
+      const { menuList, actionList } = await this.$api.permissionList();
+      this.userMenu = menuList;
+      this.$store.commit("saveMenuList", menuList);
+      this.$store.commit("saveActionList", actionList);
     },
   },
 };
